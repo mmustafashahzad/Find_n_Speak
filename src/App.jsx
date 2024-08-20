@@ -14,11 +14,11 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/choose-category" element={<ChooseCategory />} />
-          <Route path="/find-orange" element={<FindOrange />} />
+          <Route path="/choose_category" element={<ChooseCategory />} />
+          <Route path="/item_image" element={<FindOrange />} />
           <Route path="/submit" element={<Submit />} />
-          <Route path="/great-job" element={<GreatJob />} />
-          <Route path="/describe-image" element={<DescribeImage />} />
+          <Route path="/great_job" element={<GreatJob />} />
+          <Route path="/describe_image" element={<DescribeImage />} />
           <Route path="/basketball" element={<Basketball/>} />
         </Routes>
       </div>

@@ -49,57 +49,77 @@ const FindOrange = () => {
     console.log("Image submitted");
   };
 
+  const handleSpeakClick = () => {
+    const text = "FIND SOMETHING";
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-between min-h-screen bg-[#1390D2] p-4 text-white relative">
-      <div className="w-full flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-yellow-300">Find<span className="text-white">-n-</span>Speak</h1>
-        <div className="flex items-center">
-          <span className="mr-2">LEVEL : Beginer</span>
-          <i className="fas fa-pencil-alt text-yellow-300 mx-1"></i>
-          <i className="far fa-pencil-alt mx-1"></i>
-          <i className="far fa-pencil-alt mx-1"></i>
-        </div>
+    <div class="flex flex-col items-center justify-between min-h-screen bg-[#1390D2] p-4 text-white relative">
+    <div class="w-full flex justify-between items-center">
+      <img src="assets/images/FindnSpeak.svg" width="21%" class="ml-20 mt-5" />
+      <div class="flex items-center">
+        <img src="assets/images/yellowcheckmark.svg" width="15%" class="mt-5" />
       </div>
-      
-      <h2 className="text-3xl font-bold mt-20 mb-20">FIND SOMETHING CREAM</h2>
-      
-      {!cameraActive && !capturedImage && (
+    </div>
+    <div className='ml-2'>
+        <h2 class="text-3xl font-bold mb-60">FIND SOMETHING</h2>
+
+    </div>
+    {cameraActive && (
+      <div class="relative w-full max-w-md aspect-square">
+       <div className='-mt-50'>
+        <video
+            ref={videoRef}
+            class="absolute inset-0 w-full h-full object-cover rounded-lg"
+            autoPlay
+          /> 
+       </div>
+        <button
+          onClick={handleCaptureClick}
+          class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
+        ></button>
+      </div>
+    )}
+  
+    {!cameraActive && !capturedImage && (
+      <div class="flex space-x-4 mb-40">
         <button
           onClick={handleCameraClick}
-          className="w-16 h-16 bg-white rounded-full shadow-md hover:bg-gray-100 transition flex items-center justify-center"
+          class="w-16 h-16 bg-white rounded-full shadow-md hover:bg-gray-100 transition flex items-center justify-center"
         >
-          <i className="fas fa-camera text-2xl text-[#1390D2]"></i>
+          <i class="fas fa-camera text-2xl text-black"></i>
         </button>
-      )}
-      
-      {cameraActive && (
-        <div className="relative w-full max-w-md aspect-square mb-20">
-          <video
-            ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            autoPlay
-          />
-          <button
-            onClick={handleCaptureClick}
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
-          ></button>
+        <button
+          onClick={handleSpeakClick}
+          class="w-16 h-16 bg-white rounded-full shadow-md hover:bg-gray-100 transition flex items-center justify-center"
+        >
+          <i class="fas fa-volume-up text-2xl text-black"></i>
+        </button>
+      </div>
+    )}
+  
+    
+  
+    {capturedImage && (
+      <div class="w-full max-w-md aspect-square">
+        <div className='-mt-10'>
+             <img src={capturedImage} alt="Captured" class="w-full h-full object-cover rounded-lg" />
         </div>
-      )}
-      
-      {capturedImage && (
-        <div className="w-full max-w-md aspect-square mb-20">
-          <img src={capturedImage} alt="Captured" className="w-full h-full object-cover rounded-lg" />
-          <button
-            onClick={handleSubmit}
-            className="mt-4 px-6 py-2 bg-white text-[#1390D2] rounded-full shadow-md hover:bg-gray-100 transition"
-          >
-            Submit
-          </button>
-        </div>
-      )}
-      
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
-    </div>
+       <div className='mt-1 ml-20'>
+       <button
+          onClick={handleSubmit}
+          class="submit_button cursor-pointer border-[.2rem] border-solid border-black  rounded-[.5rem] text-white font-bold p-[1rem] w-[8rem] flex items-center justify-center text-center text-[1.3rem] bg-[#e97813]"
+        >
+          Submit
+        </button>
+       </div>
+      </div>
+    )}
+  
+    <canvas ref={canvasRef} style={{ display: 'none' }} />
+  </div>
   );
 };
 

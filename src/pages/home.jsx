@@ -1,14 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../i18n'; // Ensure to import the i18n configuration
 
 function HomeScreen() {
-  // Handler function for button clicks
-  const handleClick = (language) => {
-    console.log(`You clicked the ${language} button!`);
-    // Add your custom logic here, such as navigation or updating state
-  };
+  const { t, i18n } = useTranslation();
 
-  // Function to handle the text-to-speech
- 
+  const handleClick = (language) => {
+    i18n.changeLanguage(language); // Change language
+  };
 
   return (
     <div className="bg-[rgba(19,144,210,0.7)] flex items-center justify-center min-h-screen p-4">
@@ -18,23 +17,25 @@ function HomeScreen() {
         <div className="flex justify-center space-x-4 mt-6">
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-md text-lg"
-            onClick={() => handleClick('Commencer')}
+            onClick={() => handleClick('fr')}
           >
+            {/* {t('commencer')} */}
             Commencer
           </button>
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-md text-lg"
-            onClick={() => handleClick('Start')}
+            onClick={() => handleClick('en')}
           >
+            {/* {t('start')} */}
             Start
           </button>
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-md text-lg"
-            onClick={() => handleClick('یبدأ')}
+            onClick={() => handleClick('ar')}
           >
-            یبدأ
+            {/* {t('ابدا')} */}
+            ابدا
           </button>
-          
         </div>
       </div>
     </div>
