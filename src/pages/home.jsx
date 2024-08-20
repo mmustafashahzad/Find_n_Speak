@@ -8,14 +8,7 @@ function HomeScreen() {
   };
 
   // Function to handle the text-to-speech
-  const handleSpeak = (text) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(utterance);
-    } else {
-      alert('Sorry, your browser does not support text-to-speech.');
-    }
-  };
+ 
 
   return (
     <div className="bg-[rgba(19,144,210,0.7)] flex items-center justify-center min-h-screen p-4">
@@ -31,9 +24,9 @@ function HomeScreen() {
           </button>
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-md text-lg"
-            onClick={() => handleClick('English')}
+            onClick={() => handleClick('Start')}
           >
-            English
+            Start
           </button>
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-md text-lg"
@@ -41,13 +34,7 @@ function HomeScreen() {
           >
             یبدأ
           </button>
-          <button
-            className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-full text-lg flex items-center space-x-2"
-            onClick={() => handleSpeak('Welcome to Find n Speak!')}
-          >
-            <span>🔊</span>
-            <span>Speak</span>
-          </button>
+          
         </div>
       </div>
     </div>
