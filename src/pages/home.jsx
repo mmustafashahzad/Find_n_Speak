@@ -3,7 +3,18 @@ import React from 'react';
 function HomeScreen() {
   // Handler function for button clicks
   const handleClick = (language) => {
-          alert(`You clicked the ${language} button!`);
+    console.log(`You clicked the ${language} button!`);
+    // Add your custom logic here, such as navigation or updating state
+  };
+
+  // Function to handle the text-to-speech
+  const handleSpeak = (text) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.speak(utterance);
+    } else {
+      alert('Sorry, your browser does not support text-to-speech.');
+    }
   };
 
   return (
@@ -29,6 +40,16 @@ function HomeScreen() {
             onClick={() => handleClick('یبدأ')}
           >
             یبدأ
+          </button>
+        </div>
+
+        <div className="mt-4">
+          <button
+            className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-full text-lg flex items-center space-x-2"
+            onClick={() => handleSpeak('Welcome to Find n Speak!')}
+          >
+            <span>🔊</span>
+            <span>Speak</span>
           </button>
         </div>
       </div>
