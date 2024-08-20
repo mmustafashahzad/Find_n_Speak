@@ -41,9 +41,6 @@ function HomeScreen() {
           >
             یبدأ
           </button>
-        </div>
-
-        <div className="mt-4">
           <button
             className="bg-[#FEC700] text-black font-bold py-2 px-6 rounded-full text-lg flex items-center space-x-2"
             onClick={() => handleSpeak('Welcome to Find n Speak!')}
