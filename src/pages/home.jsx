@@ -3,7 +3,7 @@ import React from 'react';
 function HomeScreen() {
   // Handler function for button clicks
   const handleClick = (language) => {
-          alert(`You click the ${language} button!`);
+          alert(`You clicked the ${language} button!`);
   };
 
   return (
